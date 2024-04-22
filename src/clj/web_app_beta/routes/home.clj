@@ -5,17 +5,15 @@
     [web-app-beta.middleware :as middleware]
     [ring.util.response]
     [ring.util.http-response :as response]
-    [clj-http.client :as client])
-  )
+    [clj-http.client :as client]))
+
 
 (defn get-test-data [url]
   (let [resp (client/get url)]
     (cond (= (client/success? resp) true)
           (:body resp)
-          :else "eek!"
-          )
-    )
-  )
+          :else "eek!")))
+
 
 (defn home-page [request]
   (layout/render request "home.html" {:docs (-> "docs/docs.md" io/resource slurp)}))
@@ -24,13 +22,15 @@
   (layout/render request "about.html"))
 
 (defn test-data [request]
-  (layout/render request "test-data.html" {:data (get-test-data "https://jsonplaceholder.typicode.com/posts/1")}))
+  (def test-url "https://jsonplaceholder.typicode.com/posts/1")
+  (def resp (get-test-data test-url))
+  (layout/render request "test-data.html" {:data resp}))
 
 (defn home-routes []
   [""
    {:middleware [middleware/wrap-csrf
-                 middleware/wrap-formats
-                 ]}
+                 middleware/wrap-formats]}
+
    ["/" {:get home-page}]
    ["/test-data", {:get test-data}]
    ["/about" {:get about-page}]])
