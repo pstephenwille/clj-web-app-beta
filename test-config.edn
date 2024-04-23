@@ -3,4 +3,8 @@
 ;; This file is listed in .gitignore and will be excluded from version control by Git.
 
 {:port 3000
- }
+ :hacker-rank-base-url "https://hacker-news.firebaseio.com/v0/"}
+
+ 
+
+

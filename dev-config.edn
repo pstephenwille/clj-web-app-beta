@@ -7,5 +7,5 @@
  ;; when :nrepl-port is set the application starts the nREPL server on load
  :nrepl-port           7000
  :hacker-rank-base-url "https://hacker-news.firebaseio.com/v0/"
- :test-url             "https://jsonplaceholder.typicode.com/posts/1"
- }
+ :test-url             "https://jsonplaceholder.typicode.com/posts/1"}
+

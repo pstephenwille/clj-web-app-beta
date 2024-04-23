@@ -6,6 +6,7 @@
     [web-app-beta.handler :refer :all]
     [web-app-beta.middleware.formats :as formats]
     [muuntaja.core :as m]
+    [web-app-beta.config :refer [env]]
     [mount.core :as mount]))
 
 (defn parse-json [body]
@@ -28,10 +29,37 @@
       (is (= 404 (:status response))))))
 
 (deftest hacker-rank
-  (testing "hacker-rank"
-    (let [resp (hacker-rank-ctlr/build-item-URIs [40126751, 40115554, 40127124, 40121318])]
-      (println resp)
-      )))
+  (testing "get ids"
+    (let [actual (hacker-rank-ctlr/get-top-story-IDs)]
+      (println actual)))
+
+  (testing "build"
+
+    ))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
