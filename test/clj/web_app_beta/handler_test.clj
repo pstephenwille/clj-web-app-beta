@@ -1,5 +1,6 @@
 (ns web-app-beta.handler-test
   (:require
+    [web-app-beta.controllers.hacker-rank-ctlr :as hacker-rank-ctlr]
     [clojure.test :refer :all]
     [ring.mock.request :refer :all]
     [web-app-beta.handler :refer :all]
@@ -25,3 +26,20 @@
   (testing "not-found route"
     (let [response ((app) (request :get "/invalid"))]
       (is (= 404 (:status response))))))
+
+(deftest hacker-rank
+  (testing "hacker-rank"
+    (let [resp (hacker-rank-ctlr/build-item-URIs [40126751, 40115554, 40127124, 40121318])]
+      (println resp)
+      )))
+
+
+
+
+
+
+
+
+
+
+
